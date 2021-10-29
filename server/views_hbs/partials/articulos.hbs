@@ -1,0 +1,60 @@
+<div class="container">
+        <div class="row">
+            {{#each values}}
+                <div class="col-3" id={{ID}}>
+                    <div class="card" style="width: 200px;">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col">
+                                    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-toggle="modal" data-bs-target="#myModal"
+                                    title="Editar"><i class="far fa-edit"></i></button>
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top"
+                                    title="Eliminar"><i class="far fa-trash-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="img/000000.png" class="card-img-top">
+                        <div class="card-body">
+                            <h6 class="card-title">{{NOMBRE}} - {{UNIDAD}}</h5>
+                            <p class="card-text">{{MARCA}}</p>
+                            <p class="card-text">${{PRECIO}} MXN</p>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+</div>
+
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Modal body..
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+    function actualizar(event){
+        console.log(event.path)
+    }
+    function eliminar(){}
+</script>

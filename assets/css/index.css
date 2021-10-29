@@ -1,0 +1,13 @@
+.cnt1{ margin-top: 3em; }
+
+.col-3{ margin-top: 2em; }
+
+.btnag{ border: .1em solid black; }
+
+.btnag:hover{
+    background-color: black;
+    font-weight: 600;
+    color: white;
+}
+
+i{ font-size: 1em; }

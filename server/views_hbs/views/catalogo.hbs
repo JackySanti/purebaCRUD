@@ -1,0 +1,54 @@
+<div class="container cnt1">
+    <form action="/" method="post" class="row" id="articulo">
+        <div class="col"> <input type="text" class="form-control" id="nomArticulo" placeholder="Nombre del Articulo">
+        </div>
+        <div class="col"> <input type="text" class="form-control" id="marca" placeholder="Marca"> </div>
+        <div class="col"> <input type="text" class="form-control" id="precio" placeholder="Precio"> </div>
+        <div class="col"> <input type="text" class="form-control" id="unidad" placeholder="Unidad"> </div>
+        <div class="col"> <input type="text" class="form-control" id="existencia" placeholder="Existencia"> </div>
+        <div class="col"> <button class="btn btnag" type="submit" onclick="nProducto(event)">Agregar</button> </div>
+        {{!-- <div class="col">
+            <div class="row">
+                <div class="col">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="activo">
+                        <label class="form-check-label">Activo</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <button class="btn btnag">Agregar</button>
+                </div>
+            </div>
+        </div>
+</div> --}}
+</form>
+</div>
+
+<script>
+    function nProducto(event) {
+        event.preventDefault()
+        const nombre = document.getElementById('nomArticulo')
+        const marca = document.getElementById('marca')
+        const precio = document.getElementById('precio')
+        const unidad = document.getElementById('unidad')
+        const existencia = document.getElementById('existencia')
+
+        fetch('/nuevo_articulo',{
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                Nombre: nombre.value,
+                Marca: marca.value,
+                Precio: precio.value,
+                Unidad: unidad.value,
+                Existencia: existencia.value,
+            })
+        })
+        .then(response => response.json())
+        .then(response => console.log('Success:', response))
+        .catch(error => console.error('Error:', error))
+
+    }
+</script>
+
+{{> articulos}}
