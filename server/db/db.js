@@ -26,9 +26,13 @@ const test = {
             throw err
         }
     },
-    actualizarProducto: async({}) =>{
+    actualizarProducto: async({Id,Nombre, Marca, Precio, Unidad, Existencia}) =>{
         try{
-
+            let result = await sql_conn.request()
+            .query(`
+            UPDATE ARTICULOS SET NOMBRE = '${Nombre}', MARCA = '${Marca}', PRECIO = ${Precio},  UNIDAD = '${Unidad}', EXISTENCIA = ${Existencia} WHERE ID = ${Id}
+            `)
+            return(result)
         }catch(err){
             throw err
         }
