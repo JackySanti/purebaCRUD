@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
     db.test.obtenerProductos()
         .then((consulta) => {
             const params = {
-                values: consulta.recordset
+                articulos: consulta.recordset
             }
             res.render('index', params)
             console.log(consulta.recordset[0])

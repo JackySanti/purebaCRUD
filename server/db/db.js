@@ -37,8 +37,7 @@ const test = {
             throw err
         }
 
-    }
-    ,
+    },
     eliminarProducto: async({Id}) =>{
         try{
             let result = await sql_conn.request()
