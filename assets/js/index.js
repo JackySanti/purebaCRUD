@@ -1,7 +1,7 @@
 var deleteID, actualizarID
 
 function nProducto(event) {
-    console.log(event)
+    const $cambio = document.getElementById('aCambios')
     event.preventDefault()
     const nombre = document.getElementById('nomArticulo')
     const marca = document.getElementById('marca')
@@ -21,11 +21,13 @@ function nProducto(event) {
     })
     .then(response => response.json())
     .then(response => {
-        console.log('Success:', response)
+        $cambio.innerHTML = response.html
     })
     .catch(error => console.error('Error:', error))
 
 }
+
+function limpiar(event){}
 
 // innetText
 
@@ -39,6 +41,7 @@ function btnUpdate(id, nombre, marca, precio, unidad, existencia){
 }
 
 function actualizar(){
+    const $cambio = document.getElementById('aCambios')
     let $nombre = document.getElementById('mArticulo').value
     let $marca = document.getElementById('mMarca').value
     let $precio = document.getElementById('mPrecio').value
@@ -58,7 +61,10 @@ function actualizar(){
         })
     })
     .then(response => response.json())
-    .then(response => console.log('Success:', response))
+    .then(response =>{
+        console.log(response)
+        $cambio.innerHTML = response.html
+    })
     .catch(error => console.error('Error:', error))
 
 }

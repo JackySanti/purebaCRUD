@@ -5,12 +5,14 @@ const db = require('../db/db')
 router.post('/nuevo_articulo', async (req, res) => {
     try {
         let articulo = req.body
-        let result = await db.test.nuevoProducto(articulo)
-        console.log(result)
-        let consulta = await db.test.obtenerProductos()
-        res.json({
-            estado: 1,
-            otra: consulta.recordset
+        await db.test.nuevoProducto(articulo)
+        let params = await db.test.obtenerProductos()
+        res.render('partials/articulos', { layout: '', articulos: params.recordset }, (err, html) => {
+            console.log('Error:'+ err,'HTML:'+ html)
+            if (err) {
+                return res.json({ estado: 0 })
+            }
+            res.json({ estado: 1, html })
         })
     }
     catch (err) {
@@ -22,9 +24,15 @@ router.post('/nuevo_articulo', async (req, res) => {
 router.put('/actualizar_articulo', async (req, res) => {
     try {
         let articulo = req.body
-        let result = await db.test.actualizarProducto(articulo)
-        console.log(result)
-        res.json({ estado: 1 })
+        await db.test.actualizarProducto(articulo)
+        let params = await db.test.obtenerProductos()
+        res.render('partials/articulos', { layout: '', articulos: params.recordset }, (err, html) => {
+            console.log('Error:'+ err,'HTML:'+ html)
+            if (err) {
+                return res.json({ estado: 0 })
+            }
+            res.json({ estado: 1, html })
+        })
     }
     catch (err) {
         console.log(err)
